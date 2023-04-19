@@ -1,18 +1,25 @@
+from Logger import Logger
 class Ave():
-    def __init__(self, logger):
+    def __init__(self, nombre):
+        self.nombre = nombre
         self.energia = 2
-        self.logger = logger
+        self.nombre = nombre
+        self.distanciaRecorrida = 0
     
     def volar(self, kms):
         if self.energia >= kms*3:
             self.energia -= kms*3
-            self.logger.showInfo("El ave viajó " + str(kms) + " kms.")
+            self.distanciaRecorrida += kms
+            Logger.getInstance().showInfo(self.nombre + " viajó " + str(kms) + " kms.")
         else:
-            self.logger.showError("El ave no tiene energía suficiente para volar esos kms.")
+            Logger.getInstance().showError(self.nombre + " no tiene energía suficiente para volar esos kms.")
 
     def comer(self, grs):
         self.energia += grs
-        self.logger.showInfo("El ave ingirió " + str(grs) + " grs de comida.")
+        Logger.getInstance().showInfo(self.nombre + " ingirió " + str(grs) + " grs de comida.")
 
     def getEnergia(self):
         return self.energia
+    
+    def getDistanciaRecorrida(self):
+        return self.nombre + " recorrió " + str(self.distanciaRecorrida) + " kms."

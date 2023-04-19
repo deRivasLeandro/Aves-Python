@@ -1,46 +1,22 @@
 from Logger import Logger
 from Paloma import Paloma
 from Golondrina import Golondrina
+from Mariposa import Mariposa
 
 
-loggerInfo = Logger("INFO")
-loggerWarn = Logger("WARN")
-loggerError = Logger("ERROR")
-loggerInfo.showInfo("LOGGER INFO")
-loggerInfo.showWarn("LOGGER INFO")
-loggerInfo.showError("LOGGER INFO")
-loggerWarn.showInfo("LOGGER WARN")
-loggerWarn.showWarn("LOGGER WARN")
-loggerWarn.showError("LOGGER WARN")
-loggerError.showInfo("LOGGER ERROR")
-loggerError.showWarn("LOGGER ERROR")
-loggerError.showError("LOGGER ERROR")
-print("----------------------------------------------")
-pepita = Golondrina(loggerInfo, 2)
-pepon = Golondrina(loggerInfo, 1)
-bombon = Paloma(loggerInfo)
-print("Energía de Pepita: " + str(pepita.getEnergia()))
-pepita.comer(5)
-pepita.volar(1)
-print("Energía de Pepita: " + str(pepita.getEnergia()))
-pepita.comer(20)
-pepita.volar(2)
-print("Energía de Pepita: " + str(pepita.getEnergia()))
-pepita.pescar()
-print("Energía de Pepita: " + str(pepita.getEnergia()))
-pepita.pescar()
-print("Energía de Pepita: " + str(pepita.getEnergia()))
-pepita.pescar()
-print("Energía de Pepita: " + str(pepita.getEnergia()))
-print("----------------------------------------------")
-print("Energía de Pepón: " + str(pepon.getEnergia()))
-pepon.pescar()
-print("Energía de Pepón: " + str(pepon.getEnergia()))
-pepon.pescar()
-print("Energía de Pepón: " + str(pepon.getEnergia()))
-print("----------------------------------------------")
-print("Energía de Bombón: " + str(bombon.getEnergia()))
-bombon.defecar()
-print("Energía de Bombón: " + str(bombon.getEnergia()))
-bombon.defecar()
-print("Energía de Bombón: " + str(bombon.getEnergia()))
+logger = Logger("INFO")
+twinkle = Mariposa("Twinkle")
+pepita = Golondrina("Pepita", 2)
+pepon = Golondrina("Pepón", 1)
+bombon = Paloma("Bombón")
+lista = [twinkle, pepita, pepon, bombon]
+for i in range(0, len(lista)):
+    lista[i].comer(20)
+for i in range(0, len(lista)):
+    lista[i].volar(2)
+for i in range(0, len(lista)):
+    lista[i].comer(10)
+for i in range(0, len(lista)):
+    lista[i].volar(3)
+for i in range(0, len(lista)):
+    Logger.getInstance().showInfo(lista[i].getDistanciaRecorrida())
